@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>八进制计算器</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/calc.js"></script>
+    <script>
+        // 复制时去除空格
+        document.addEventListener("copy", function copy(e) {
+            //做兼容
+            e = window.event || e;
+
+            //阻止默认事件行为（复制文本）
+            e.preventDefault();
+
+            //去除空格
+            e.clipboardData.setData("text", getSelection().toString().replace(/\s+/g, ""));
+        })
+    </script>
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>八进制快捷计算器</h2>
+        <h3>Octal calculator based on JavaScript</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="mb-4">
+            <h4 class="mb-3">码制转换(有符号 -128~127)</h4>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="Decimal0">十进制有符号数</label>
+                    <input type="text" class="form-control" id="Decimal0" placeholder="请输入十进制(-128~127)"
+                           oninput='this.value=this.value.replace(/[^(\-)0-9]/g,"")'
+                           maxlength="4">
+                    <div class="invalid-feedback" id="msg1"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Decimal1">十进制无符号数</label>
+                    <input type="text" class="form-control" id="Decimal1" maxlength="0">
+                    <div class="invalid-feedback" id="msg2"></div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Original">二进制原码(8位)</label>
+                    <input type="text" class="form-control" id="Original" placeholder="请输入二进制原码"
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Inverse">二进制反码(8位)</label>
+                    <input type="text" class="form-control" id="Inverse" placeholder="请输入二进制反码"
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Complement">二进制补码(8位)</label>
+                    <input type="text" class="form-control" id="Complement" placeholder="请输入二进制补码"
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="OriginalToHex">十六进制原码</label>
+                    <input type="text" class="form-control" id="OriginalToHex" maxlength="0">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="InverseToHex">十六进制反码</label>
+                    <input type="text" class="form-control" id="InverseToHex" maxlength="0">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="ComplementToHex">十六进制补码</label>
+                    <input type="text" class="form-control" id="ComplementToHex" maxlength="0">
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty1()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">进制转换(无符号 0~Any)</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <select class="custom-select d-block w-100" id="scaleNum">
+                        <option value="">选择进制...</option>
+                        <option value="2">二进制(B)</option>
+                        <option value="8">八进制(O)</option>
+                        <option value="10" selected>十进制(D)</option>
+                        <option value="16">十六进制(H)</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" id="sNum" placeholder="请输入" value=""
+                           oninput="numValid(this.value, 0, this)">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Binary">二进制</label>
+                    <input type="text" class="form-control" id="Binary" maxlength="0">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="Decimal">十进制</label>
+                    <input type="text" class="form-control" id="Decimal" maxlength="0">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="Hexadecimal">十六进制</label>
+                    <input type="text" class="form-control" id="Hexadecimal" maxlength="0">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="Octonary">八进制</label>
+                    <input type="text" class="form-control" id="Octonary" maxlength="0">
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty2()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">小数转换(不支持负数)</h4>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="Binary">二进制</label>
+                    <input type="text" class="form-control" id="floatBin" placeholder="请输入二进制" oninput="floatChange(2)">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Decimal">十进制</label>
+                    <input type="text" class="form-control" id="floatDec" placeholder="请输入十进制"
+                           oninput="floatChange(10)">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Hexadecimal">十六进制</label>
+                    <input type="text" class="form-control" id="floatHex" placeholder="请输入十六进制"
+                           oninput="floatChange(16)">
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty7()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">浮点表示(不支持负数)
+                <small class="text-muted">N=S×2^P 阶码P与尾数S各4位</small></h4>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="Binary">二进制(8位)</label>
+                    <input type="text" class="form-control" id="float8Bin" maxlength="0" oninput="float8Change(2)">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Decimal">十进制</label>
+                    <input type="text" class="form-control" id="float8Dec" placeholder="请输入十进制"
+                           oninput="float8Change(10)">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Hexadecimal">十六进制</label>
+                    <input type="text" class="form-control" id="float8Hex" maxlength="0" oninput="float8Change(16)">
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty6()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">进制基本运算</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Addend">二进制加法</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="Addend" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+</span>
+                        </div>
+                        <input type="text" class="form-control" id="Addend2" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">=</span>
+                        </div>
+                        <input type="text" class="form-control" id="AddRes" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Subtraction">二进制减法</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="Subtraction" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">-</span>
+                        </div>
+                        <input type="text" class="form-control" id="Subtraction2" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">=</span>
+                        </div>
+                        <input type="text" class="form-control" id="SubRes" maxlength="8"
+                               oninput='this.value=this.value.replace(/[^01]+/gi,"")'>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty3()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">BCD码转换</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2dec">十进制数</label>
+                    <input type="text" class="form-control" id="bcd2dec" placeholder="请输入十进制数字"
+                           oninput='this.value=this.value.replace(/\D/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd">BCD码</label>
+                    <input type="text" class="form-control" id="bcd" placeholder="请输入二进制BCD码" value=""
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2oct">BCD码对应八进制</label>
+                    <input type="text" class="form-control" id="bcd2oct" maxlength="0">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2hex">BCD码对应十六进制</label>
+                    <input type="text" class="form-control" id="bcd2hex" maxlength="0">
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty4()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 <a href="https://github.com/cnzc" target="_blank">cnzc</a></p>
+    </footer>
+</div>
+</body>
+</html>
