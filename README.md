@@ -1,5 +1,5 @@
 # eight
-A quick calculator with eight functions
+A quick calculator with eight functions based on JavaScript
 
 ## 项目介绍
 一款有8种功能的进制快捷计算器,主要基于Javascript制作
