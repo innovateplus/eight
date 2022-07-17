@@ -1,7 +1,7 @@
 # eight
 Octal calculator based on JavaScript
 ## 项目介绍
-一款有8种功能的进制快捷计算器
+一款有8种功能的进制快捷计算器,主要基于Javascript制作
 
 ## 项目预览
 在线使用地址：http://cnzc.github.io/eight
