@@ -1,5 +1,6 @@
 # eight
-Octal calculator based on JavaScript
+A quick calculator with eight functions
+
 ## 项目介绍
 一款有8种功能的进制快捷计算器,主要基于Javascript制作
 
