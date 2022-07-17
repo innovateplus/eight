@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>八进制计算器</title>
+    <title>A quick calculator with 8 functions</title>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/calc.js"></script>
@@ -25,8 +25,8 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h2>八进制快捷计算器</h2>
-        <h3>Octal calculator based on JavaScript</h3>
+        <h2>八功能快捷计算器</h2>
+        <h3>A quick calculator with 8 functions based on Javascript</h3>
     </div>
 
     <div class="row">
@@ -224,7 +224,58 @@
                 </div>
             </div>
             <hr class="mb-4">
-            
+            <h4 class="mb-3">BCD码转换</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2dec">十进制数</label>
+                    <input type="text" class="form-control" id="bcd2dec" placeholder="请输入十进制数字"
+                           oninput='this.value=this.value.replace(/\D/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd">BCD码</label>
+                    <input type="text" class="form-control" id="bcd" placeholder="请输入二进制BCD码" value=""
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2oct">BCD码对应八进制</label>
+                    <input type="text" class="form-control" id="bcd2oct" maxlength="0">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2hex">BCD码对应十六进制</label>
+                    <input type="text" class="form-control" id="bcd2hex" maxlength="0">
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty4()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <h4 class="mb-3">BCD码转换</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2dec">十进制数</label>
+                    <input type="text" class="form-control" id="bcd2dec" placeholder="请输入十进制数字"
+                           oninput='this.value=this.value.replace(/\D/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd">BCD码</label>
+                    <input type="text" class="form-control" id="bcd" placeholder="请输入二进制BCD码" value=""
+                           oninput='this.value=this.value.replace(/[^01]+/gi,"")' maxlength="8">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2oct">BCD码对应八进制</label>
+                    <input type="text" class="form-control" id="bcd2oct" maxlength="0">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bcd2hex">BCD码对应十六进制</label>
+                    <input type="text" class="form-control" id="bcd2hex" maxlength="0">
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="empty4()">全部清空(Q)</button>
+                </div>
+            </div>
+            <hr class="mb-4">
         </div>
     </div>
 
