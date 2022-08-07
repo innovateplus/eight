@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>MC-beta</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="http://mc.clappinggame.net 我的世界网页版" />
+<meta name="keywords" content="网页版MC, 我的世界网页版, http://mc.clappinggame.net" />
+<meta name='url' content="http://mc.clappinggame.net" />
+<meta name="author" content="Calder Young" />
+<meta property="og:title" content="Minecraft Web" />
+<meta property="og:locale" content="en-US" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://mc.clappinggame.net" />
+<meta property="og:image" content="startlogo.png" />
+<meta property="og:description" content="Eaglercraft is real Minecraft 1.5.2 that you can play in any regular web browser. That includes school chromebooks, it works on all chromebooks. You can join real Minecraft 1.5.2 servers with it through a custom proxy based on Bungeecord." />
+<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
+<script type="text/javascript" src="classes.js"></script>
+<style type="text/css">
+a.nolink, a.nolink:link, a.nolink:hover, a.nolink:visited {
+	color: white;
+}
+a.nolink:active {
+	color: yellow;
+}
+#available {
+	position: fixed;
+	background-color: #333333;
+	top: 0px;
+	right: 0px;
+	padding: 10px 30px;
+	width:min(80vw,250px); 
+	color:white;
+}
+#available_hide {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	margin: 10px;
+	padding: 2px;
+	font-weight: bold;
+	border: 1px solid white;
+	font-size: 12px;
+	line-height: 12px;
+	cursor: pointer;
+	background-color: #333333;
+}
+</style>
+<script type="text/javascript">
+window.addEventListener("load", function(){
+window.minecraftOpts = [
+	"game_frame","assets.epk",
+	"CgAACQAHc2VydmVycwoAAAABCAACaXAAFndzOi8vODEuNjkuMS4yMTk6MjU1NjUIAARuYW1lABJDRyF0cnkgTUMgLSAoQkVUQSkBAAtoaWRlQWRkcmVzcwEIAApmb3JjZWRNT1REABl0aGlzIGlzIG5vdCBhIHJlYWwgc2VydmVyAAA="
+	//"CgAACQAHc2VydmVycwoAAAABCAACaXAAJ3dzczovL21jc2VyLmNsYXBwaW5nZ2FtZS5yZXBsLmNvL3NlcnZlcggABG5hbWUACUNHIXRyeSBNQwEAC2hpZGVBZGRyZXNzAQgACmZvcmNlZE1PVEQAGXRoaXMgaXMgbm90IGEgcmVhbCBzZXJ2ZXIAAA=="
+	//"CgAACQAHc2VydmVycwoAAAABCAACaXAANHdzczovL2VhZ2xlcmNyYWZ0LXNlcnZlci5jbGFwcGluZ2dhbWUucmVwbC5jby9zZXJ2ZXIIAARuYW1lAAlDRyF0cnkgTUMBAAtoaWRlQWRkcmVzcwEIAApmb3JjZWRNT1REABl0aGlzIGlzIG5vdCBhIHJlYWwgc2VydmVyAAA="
+	//"CgAACQAHc2VydmVycwoAAAABCAACaXAAIHdzOi8vbWNvbi5jbGFwcGluZ2dhbWUubmV0OjQyMDc3CAAEbmFtZQAJQ0chdHJ5IE1DAQALaGlkZUFkZHJlc3MBCAAKZm9yY2VkTU9URAAZdGhpcyBpcyBub3QgYSByZWFsIHNlcnZlcgAA"
+	//"CgAACQAHc2VydmVycwoAAAAGCAACaXAAHHdzczovL3BsYXkuaW1jLnJlOjQ0MS9zZXJ2ZXIIAARuYW1lAApJTUMuUkUgV1NTAQALaGlkZUFkZHJlc3MBCAAKZm9yY2VkTU9URAAQSU1DLlJFIFdlYlNlcnZlcgAIAAJpcAAbd3NzOi8vcGxheS5pbWMucmU6NDQxL2hpZ2h2CAAEbmFtZQALSU1DLlJFIEhpZ2gBAAtoaWRlQWRkcmVzcwEIAApmb3JjZWRNT1REABBJTUMuUkUgV2ViU2VydmVyAAgAAmlwAB53c3M6Ly9wbGF5LmltYy5yZTo0NDEvZGF3bmhhbGwIAARuYW1lAAhEYXduSGFsbAEAC2hpZGVBZGRyZXNzAQgACmZvcmNlZE1PVEQACERhd25IYWxsAAgAAmlwABt3c3M6Ly9wbGF5LmltYy5yZTo0NDEvZ2FtZXMIAARuYW1lAAVnYW1lcwEAC2hpZGVBZGRyZXNzAQgACmZvcmNlZE1PVEQABWdhbWVzAAgAAmlwABx3c3M6Ly9wbGF5LmltYy5yZTo0NDEvbnNlcnZlCAAEbmFtZQAGbnNlcnZlAQALaGlkZUFkZHJlc3MBCAAKZm9yY2VkTU9URAAGbnNlcnZlAAgAAmlwAB93c3M6Ly93ZWIuYXNzcGl4ZWwubmV0L0NBUGl4ZWwvCAAEbmFtZQAIYXNzcGl4ZWwBAAtoaWRlQWRkcmVzcwEIAApmb3JjZWRNT1REAAdDQVBpeGVsAAEACWhpZGVfZG93bgEIAA9zZXJ2ZXJMaXN0VGl0bGUAE0lNQy5SRSDlpJrkurrmuLjmiI8IAA5zZXJ2ZXJMaXN0TGluawAOaHR0cDovL2ltYy5yZS8KAAhtYWluTWVudQIADG1haW5NZW51SXRlbQFiCAAJaXRlbUxpbmUwAA/liJvlu7rmnI3liqHlmagIAAlpdGVtTGluZTEAJ+WIm+W7uuWxnuS6juS9oOiHquW3seeahOacjeWKoeWZqOWQp++8gQgACWl0ZW1MaW5lMgAOKHN0b3JlLmltYy5yZSkIAAhpdGVtTGluawAVaHR0cDovL2l1cmwubHRkL3dtc2VsAAA="
+	//"CgAACQAHc2VydmVycwoAAAAFCAACaXAAHHdzczovL3BsYXkuaW1jLnJlOjQ0MS9zZXJ2ZXIIAARuYW1lAApJTUMuUkUgV1NTAQALaGlkZUFkZHJlc3MBCAAKZm9yY2VkTU9URAAQSU1DLlJFIFdlYlNlcnZlcgAIAAJpcAAbd3NzOi8vcGxheS5pbWMucmU6NDQxL2hpZ2h2CAAEbmFtZQALSU1DLlJFIEhpZ2gBAAtoaWRlQWRkcmVzcwEIAApmb3JjZWRNT1REABBJTUMuUkUgV2ViU2VydmVyAAgAAmlwAB53c3M6Ly9wbGF5LmltYy5yZTo0NDEvZGF3bmhhbGwIAARuYW1lAAhEYXduSGFsbAEAC2hpZGVBZGRyZXNzAQgACmZvcmNlZE1PVEQACERhd25IYWxsAAgAAmlwABt3c3M6Ly9wbGF5LmltYy5yZTo0NDEvZ2FtZXMIAARuYW1lAAVnYW1lcwEAC2hpZGVBZGRyZXNzAQgACmZvcmNlZE1PVEQABWdhbWVzAAgAAmlwABx3c3M6Ly9wbGF5LmltYy5yZTo0NDEvbnNlcnZlCAAEbmFtZQAGbnNlcnZlAQALaGlkZUFkZHJlc3MBCAAKZm9yY2VkTU9URAAGbnNlcnZlAAEACWhpZGVfZG93bgEIAA9zZXJ2ZXJMaXN0VGl0bGUAE0lNQy5SRSDlpJrkurrmuLjmiI8IAA5zZXJ2ZXJMaXN0TGluawAOaHR0cDovL2ltYy5yZS8KAAhtYWluTWVudQIADG1haW5NZW51SXRlbQFiCAAJaXRlbUxpbmUwAA/liJvlu7rmnI3liqHlmagIAAlpdGVtTGluZTEAJ+WIm+W7uuWxnuS6juS9oOiHquW3seeahOacjeWKoeWZqOWQp++8gQgACWl0ZW1MaW5lMgAOKHN0b3JlLmltYy5yZSkIAAhpdGVtTGluawAVaHR0cDovL2l1cmwubHRkL3dtc2VsAAA="
+];
+(function(){
+var q = window.location.search;
+if(typeof q === 'string' && q.startsWith("?")) {
+	q = new URLSearchParams(q);
+	var s = q.get("server");
+	if(s) window.minecraftOpts.push(s);
+}
+})();
+setTimeout(function() { document.getElementById("available").style.display = "block"; }, 5000 );
+window.remAvailable = setTimeout(function() { document.getElementById("available").remove(); }, 18000 );
+document.getElementById("available_hide").addEventListener("click", function() {
+	clearTimeout(window.remAvailable);
+	document.getElementById("available").remove();
+});
+main();
+});
+</script>
+</head>
+<body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
+<div id="available" style="display:none;">
+<p id="available_hide">&nbsp;X&nbsp;</p>
+<p style="margin:0px;">【CG!体验卡MC（内部网络）】</p>
+<p style="margin:0px;">请用电脑版GoogleChrome浏览器访问。</p>
+<p style="margin:0px;">初次加载要20多秒，请耐心等待。</p>
+<p style="margin:0px;">CG内部专用！BETA</p>
+</div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"72502f14abf37b35","version":"2022.6.0","r":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>
