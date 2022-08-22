@@ -3,7 +3,9 @@ var you2=[1,1,1,1,1,1,1,1,1,1],pc2=[1,1,1,1,1,1,1,1,1,1];
 var you3=[1,1,1,1,1,1,1,1,1,1],pc3=[1,1,1,1,1,1,1,1,1,1];
 var yy=0,pp=0,nn=0,rd=1,ww=1;
 var pcpan=[0,0,0,0,0,0,0,0,0,0];
-var pcpancount=0;
+var pcpan88=[0,0,0,0,0,0,0,0,0,0];
+var pcpan11=[0,0,0,0,0,0,0,0,0,0];
+var pcpancount=0,pcpancount88=0,pcpancount11=0;
 var i=0;
     
 function p1()
@@ -147,14 +149,11 @@ function clpcp()
 {
     pcpan[1]=0;pcpan[2]=0;pcpan[3]=0;pcpan[4]=0;pcpan[5]=0;
     pcpan[6]=0;pcpan[7]=0;pcpan[8]=0;pcpan[9]=0;pcpan[0]=0;
-    pcpancount=0;
-    return 0;
-}
-function clpcp2()
-{
-    pcpan2[1]=0;pcpan2[2]=0;pcpan2[3]=0;pcpan2[4]=0;pcpan2[5]=0;
-    pcpan2[6]=0;pcpan2[7]=0;pcpan2[8]=0;pcpan2[9]=0;pcpan2[0]=0;
-    pcpancount2=0;
+    pcpan88[1]=0;pcpan88[2]=0;pcpan88[3]=0;pcpan88[4]=0;pcpan88[5]=0;
+    pcpan88[6]=0;pcpan88[7]=0;pcpan88[8]=0;pcpan88[9]=0;pcpan88[0]=0;
+    pcpan11[1]=0;pcpan11[2]=0;pcpan11[3]=0;pcpan11[4]=0;pcpan11[5]=0;
+    pcpan11[6]=0;pcpan11[7]=0;pcpan11[8]=0;pcpan11[9]=0;pcpan11[0]=0;
+    pcpancount=0;pcpancount88=0;pcpancount11=0;
     return 0;
 }
 
@@ -260,6 +259,14 @@ function zok()
                 copy(1);
                 do2(i);
                 panding=0;
+                if(pc2[1]==8||pc2[2]==8)
+                {
+                    panding=88;
+                }
+                else if(pc2[1]==pc2[2])
+                {
+                    panding=11;
+                }
                 if(yanpc()==1)panding=1;
                 for(m=1;m<=8;m++)
                 {
@@ -269,17 +276,36 @@ function zok()
                     {
                         panding=1;
                     }
+                    
                 }
                 if(panding==0)
                 {
                     pcpancount++;pcpan[pcpancount]=i;
                 }
+                else if(panding==88)
+                {
+                    pcpancount88++;pcpan88[pcpancount88]=i;
+                }
+                else if(panding==11)
+                {
+                    pcpancount11++;pcpan11[pcpancount11]=i;
+                }
 
             }
-            if(pcpancount>0)
+            if(pcpancount88>0)
+            {
+                doit=Math.floor(Math.random()*pcpancount88)+1;
+                do1(pcpan88[doit]);step=1;
+            }  
+            else if(pcpancount>0)
             {
                 doit=Math.floor(Math.random()*pcpancount)+1;
                 do1(pcpan[doit]);step=1;
+            }  
+            else if(pcpancount11>0)
+            {
+                doit=Math.floor(Math.random()*pcpancount11)+1;
+                do1(pcpan11[doit]);step=1;
             }         
         }
         //step3:输了，乱走一步。
