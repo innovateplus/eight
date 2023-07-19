@@ -188,7 +188,7 @@ function pcfirst()
 var step=0,panding=0,doit=0,doit2=0,over=0;
 function zok()
 {
-        document.getElementById("pcf").style.display = "none";
+
     if(over==1)
     {
         yy=0;pp=0;nn=0;
@@ -219,6 +219,7 @@ function zok()
             return;
         }
         rd++;
+        document.getElementById("pcf").style.display = "none";
         document.getElementById("round").innerHTML = rd;
             if(nn==1)
             {
