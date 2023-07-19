@@ -179,9 +179,16 @@ function okreset()
     document.getElementById("ok").className = "btn btn-success";
 }
 okreset();btnreset();
+function pcfirst()
+{
+    pc[1]=2;
+    document.getElementById("pcl").innerHTML = pc[1];
+    document.getElementById("pcf").style.display = "none";
+}
 var step=0,panding=0,doit=0,doit2=0,over=0;
 function zok()
 {
+        document.getElementById("pcf").style.display = "none";
     if(over==1)
     {
         yy=0;pp=0;nn=0;
@@ -197,8 +204,10 @@ function zok()
             document.getElementById("round").innerHTML = rd;
             document.getElementById("okimg").src="image/ok.svg";
             over=0;okreset();btnreset();
+            document.getElementById("pcf").style.display = "block";
             return;
     }
+
     if(yy==0||pp==0||nn==0)
     {
         return;
