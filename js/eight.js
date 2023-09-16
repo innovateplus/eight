@@ -87,6 +87,22 @@ function do1(d1)
     if(pc[1]==0) pc[1]=1;
     if(pc[2]>9) pc[2]=pc[2]%10;
     if(pc[2]==0) pc[2]=1;
+//tip4pc
+    if(d1==1) {yy=1;pp=1;nn=1;}
+    else if(d1==2){yy=2;pp=1;nn=1;}
+    else if(d1==3){yy=1;pp=2;nn=1;}
+    else if(d1==4){yy=2;pp=2;nn=1;}
+    else if(d1==5){yy=1;pp=1;nn=2;}
+    else if(d1==6){yy=2;pp=1;nn=2;}
+    else if(d1==7){yy=1;pp=2;nn=2;}
+    else     {yy=2;pp=2;nn=2;}
+    document.getElementById("pcltip").innerHTML = (nn==1)?"+"+String(you[yy]):"×"+String(you[yy]);
+    document.getElementById("pcrtip").innerHTML = (nn==1)?"+"+String(you[yy]):"×"+String(you[yy]);
+    document.getElementById("pcltip").style.opacity = "0";
+    document.getElementById("pcrtip").style.opacity = "0";
+    if(pp==1)document.getElementById("pcltip").style.opacity = "0.8";
+    if(pp==2)document.getElementById("pcrtip").style.opacity = "0.8";
+
     return 0;
 }
 function do2(d2)
@@ -165,6 +181,7 @@ function btnreset()
     document.getElementById("time").className = "btn btn-dark";
     document.getElementById("your").className = "btn btn-dark";
     document.getElementById("youl").className = "btn btn-dark";
+
 }
 function okreset()
 {
@@ -184,11 +201,13 @@ function pcfirst()
     pc[1]=2;
     document.getElementById("pcl").innerHTML = pc[1];
     document.getElementById("pcf").style.display = "none";
+    document.getElementById("pcltip").innerHTML = "+1";
+    document.getElementById("pcltip").style.opacity = "0.8";
+    document.getElementById("pcrtip").style.opacity = "0";
 }
 var step=0,panding=0,doit=0,doit2=0,over=0;
 function zok()
 {
-
     if(over==1)
     {
         yy=0;pp=0;nn=0;
@@ -205,6 +224,13 @@ function zok()
             document.getElementById("okimg").src="image/ok.svg";
             over=0;okreset();btnreset();
             document.getElementById("pcf").style.display = "block";
+
+
+        document.getElementById("pcltip").style.opacity = "0";
+        document.getElementById("pcrtip").style.opacity = "0";
+        document.getElementById("youltip").style.opacity = "0";
+        document.getElementById("yourtip").style.opacity = "0";
+
             return;
     }
 
@@ -234,8 +260,14 @@ function zok()
                 if(you[yy]==0) you[yy]=1;
             }
 
-            document.getElementById("youl").innerHTML = you[1];
-			document.getElementById("your").innerHTML = you[2];
+        document.getElementById("youltip").innerHTML = (nn==1)?"+"+String(pc[pp]):"×"+String(pc[pp]);
+        document.getElementById("yourtip").innerHTML = (nn==1)?"+"+String(pc[pp]):"×"+String(pc[pp]);
+        document.getElementById("youltip").style.opacity = "0";
+        document.getElementById("yourtip").style.opacity = "0";
+        if(yy==1)document.getElementById("youltip").style.opacity = "0.8";
+        if(yy==2)document.getElementById("yourtip").style.opacity = "0.8";
+        document.getElementById("youl").innerHTML = you[1];
+        document.getElementById("your").innerHTML = you[2];
             btnreset();okreset();
         yy=0;pp=0;nn=0;
         if(you[1]==8&&you[2]==8)

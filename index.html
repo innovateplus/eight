@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon"  href="image/ico.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EIGHT</title>
-
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
@@ -15,21 +14,28 @@
 		<div class="text-center">
 			
 <h1 style="font-size: 54px;"><b>EIGHT</b></h1>
-<p>在<a href="https://eight.js.org"> https://eight.js.org </a>上免费游玩</p><br>
+			<p>在<a href="https://eight.js.org"> https://eight.js.org </a>上免费游玩</p><br>
+
 			<br>
-			<span class="btn btn-dark" style="width:18%;" id="pcl" onclick="p1()">1</span>
-			<span class="btn btn-dark" style="width:18%;" id="pcr" onclick="p2()">1</span>
+			<span id="pcltip" class="tips">+?</span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="pcl" onclick="p1()">1</span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="pcr" onclick="p2()">1</span>
+			<span id="pcrtip" class="tips">+?</span>
 			<br>
-			<span class="btn btn-dark" style="width:18%;" id="plus" onclick="pl()"><img src="image/plus.svg" style="margin-bottom: 1px;"></span>
-			<span class="btn btn-dark" style="width:18%;" id="time" onclick="ti()"><img src="image/time.svg" style="margin-top: 1px;"></span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="plus" onclick="pl()"><img src="image/plus.svg" style="margin-bottom: 1px;"></span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="time" onclick="ti()"><img src="image/time.svg" style="margin-top: 1px;"></span>
 			<br>
-			<span class="btn btn-dark" style="width:18%;" id="youl" onclick="y1()">1</span>
-			<span class="btn btn-dark" style="width:18%;" id="your" onclick="y2()">1</span>
+			<span id="youltip" class="tips">+?</span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="youl" onclick="y1()">1</span>
+			<span class="btn btn-dark" style="width:18%;position: relative;" id="your" onclick="y2()">1</span>
+			<span id="yourtip" class="tips">+?</span>
 			<br>
 			<span class="btn btn-dark" style="width:38%;" id="ok" onclick="zok()"><img id="okimg" src="image/ok.svg" style="margin-top: 8px;"></span>
 			<br>
 <strong><span>Round</span> <span id="round">1</span></strong><br>
 <a id="pcf" onclick="pcfirst()" style="display: block;cursor: pointer;">让电脑先开始</a>
+
+
 </div><br>
     <h4>简介</h4>
 	<p>  《EIGHT(8)》是一款十分简单有手就能玩的双人小游戏。</p>
